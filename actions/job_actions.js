@@ -1,7 +1,7 @@
 import axios from 'axios';
 import reverseGeocode from 'latlng-to-zip';
 import qs from 'qs';
-import { FETCH_JOBS, LIKE_JOB } from './types';
+import { FETCH_JOBS, LIKE_JOB, CLEAR_LIKED_JOBS } from './types';
 
 const JOB_QUERY_PARAMS = {
     publisher: '4201738803816157',
@@ -35,5 +35,11 @@ export const likeJob = (job) => {
     return {
         payload: job,
         type: LIKE_JOB
+    };
+};
+
+export const clearLikedJobs = () => {
+    return {
+        type: CLEAR_LIKED_JOBS
     };
 };

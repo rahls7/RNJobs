@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { View, Text, Platform, ScrollView, Linking } from 'react-native';
-import { Button, Card } from 'react-native-elements';
+import { Button, Card, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { MapView } from 'expo';
 
 class ReviewScreen extends Component {
    static navigationOptions = ({ navigation }) => ({
         title: 'Review Jobs',
+        tabBarIcon: ({ tintColor }) => {
+            return <Icon name="favorite" size={30} color={tintColor} />;
+        },
         headerRight: (
         <Button
          title='Settings'
@@ -29,7 +32,7 @@ class ReviewScreen extends Component {
                 longitudeDelta: 0.02
             };
             return (
-            <Card>
+            <Card title={job.jobtitle} key={job.jobkey}>
                 <View style={{ height: 200 }}>
                     <MapView 
                     style={{ flex: 1 }}
@@ -66,6 +69,7 @@ function mapStateToProps(state) {
 const styles = {
     detailWrapper: {
         marginBottom: 10,
+        marginTop: 10,
         flexDirection: 'row',
         justifyContent: 'space-around'
     },
